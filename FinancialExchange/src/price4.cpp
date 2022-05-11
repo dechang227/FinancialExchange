@@ -8,10 +8,8 @@
 #include <string>
 #include "../include/price4.hpp"
 
-using namespace std;
 
-
-namespace fe{
+namespace fe::price{
     constexpr int kScale4 = 10000;
     
     Price4::Price4(const std::string& str){
@@ -37,9 +35,9 @@ namespace fe{
 
     std::string Price4::to_str() const{
         
-        const string int_part = to_string(unscaled_/kScale4);
+        const std::string int_part = std::to_string(unscaled_/kScale4);
         long res = unscaled_ - unscaled_/kScale4*kScale4;
-        string fraction = ".0000";
+        std::string fraction = ".0000";
         
         int i = 4;
         int remove_zeros = 0;

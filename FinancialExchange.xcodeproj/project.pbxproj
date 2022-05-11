@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		8D99590127EFCC5E00992176 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F487327E6EF00005E7204 /* main.cpp */; };
 		8D99590227EFCCF300992176 /* price4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E42A27E6AE8B009B7DC0 /* price4.cpp */; };
+		8D99590727F8F5F500992176 /* order.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E42C27E6AE8B009B7DC0 /* order.cpp */; };
+		8D99590A27F9135300992176 /* orderbook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D99590827F9135300992176 /* orderbook.cpp */; };
+		8D99590B27F9135300992176 /* orderbook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D99590827F9135300992176 /* orderbook.cpp */; };
+		8D99590E28021B2300992176 /* order_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D99590C28021B2300992176 /* order_unittest.cpp */; };
+		8D99591128035CAC00992176 /* orderbook_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D99590F28035CAC00992176 /* orderbook_unittest.cpp */; };
+		8D9959162813AB9600992176 /* feedevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D9959142813AB9600992176 /* feedevent.cpp */; };
+		8D9959172813AB9600992176 /* feedevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D9959142813AB9600992176 /* feedevent.cpp */; };
+		8D995919281B927A00992176 /* feedevent_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D995918281B927A00992176 /* feedevent_unittest.cpp */; };
+		8D99591A281B927A00992176 /* feedevent_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D995918281B927A00992176 /* feedevent_unittest.cpp */; };
 		8D9F487E27EFB1BB005E7204 /* price4_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E45427E6BD55009B7DC0 /* price4_unittest.cpp */; };
 		8DA3E43627E6B03A009B7DC0 /* datapublisher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E42927E6AE8B009B7DC0 /* datapublisher.cpp */; };
 		8DA3E43827E6B03A009B7DC0 /* matchingengine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E42B27E6AE8B009B7DC0 /* matchingengine.cpp */; };
@@ -39,6 +48,14 @@
 
 /* Begin PBXFileReference section */
 		8D81CBB727D538AA00031DCA /* FinancialExchange */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FinancialExchange; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D99590827F9135300992176 /* orderbook.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = orderbook.cpp; sourceTree = "<group>"; };
+		8D99590927F9135300992176 /* orderbook.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = orderbook.hpp; sourceTree = "<group>"; };
+		8D99590C28021B2300992176 /* order_unittest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = order_unittest.cpp; sourceTree = "<group>"; };
+		8D99590F28035CAC00992176 /* orderbook_unittest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = orderbook_unittest.cpp; sourceTree = "<group>"; };
+		8D995913280CC52A00992176 /* jsonparser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsonparser.hpp; sourceTree = "<group>"; };
+		8D9959142813AB9600992176 /* feedevent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = feedevent.cpp; sourceTree = "<group>"; };
+		8D9959152813AB9600992176 /* feedevent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = feedevent.hpp; sourceTree = "<group>"; };
+		8D995918281B927A00992176 /* feedevent_unittest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = feedevent_unittest.cpp; sourceTree = "<group>"; };
 		8D9F487327E6EF00005E7204 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8DA3E42927E6AE8B009B7DC0 /* datapublisher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = datapublisher.cpp; sourceTree = "<group>"; };
 		8DA3E42A27E6AE8B009B7DC0 /* price4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = price4.cpp; sourceTree = "<group>"; };
@@ -103,6 +120,9 @@
 			children = (
 				8DA3E44427E6B2FF009B7DC0 /* datapublisher.hpp */,
 				8DA3E44127E6B2FF009B7DC0 /* matchingengine.hpp */,
+				8D9959152813AB9600992176 /* feedevent.hpp */,
+				8D995913280CC52A00992176 /* jsonparser.hpp */,
+				8D99590927F9135300992176 /* orderbook.hpp */,
 				8DA3E44327E6B2FF009B7DC0 /* order.hpp */,
 				8DA3E44227E6B2FF009B7DC0 /* price4.hpp */,
 			);
@@ -114,6 +134,8 @@
 			children = (
 				8DA3E42A27E6AE8B009B7DC0 /* price4.cpp */,
 				8DA3E42927E6AE8B009B7DC0 /* datapublisher.cpp */,
+				8D99590827F9135300992176 /* orderbook.cpp */,
+				8D9959142813AB9600992176 /* feedevent.cpp */,
 				8DA3E42B27E6AE8B009B7DC0 /* matchingengine.cpp */,
 				8DA3E42C27E6AE8B009B7DC0 /* order.cpp */,
 				8D9F487327E6EF00005E7204 /* main.cpp */,
@@ -131,7 +153,10 @@
 		8DA3E44E27E6BC5D009B7DC0 /* Unittest */ = {
 			isa = PBXGroup;
 			children = (
+				8D99590C28021B2300992176 /* order_unittest.cpp */,
+				8D99590F28035CAC00992176 /* orderbook_unittest.cpp */,
 				8DA3E45427E6BD55009B7DC0 /* price4_unittest.cpp */,
+				8D995918281B927A00992176 /* feedevent_unittest.cpp */,
 			);
 			path = Unittest;
 			sourceTree = "<group>";
@@ -217,7 +242,10 @@
 				8DA3E43627E6B03A009B7DC0 /* datapublisher.cpp in Sources */,
 				8DA3E43827E6B03A009B7DC0 /* matchingengine.cpp in Sources */,
 				8DA3E43927E6B03A009B7DC0 /* order.cpp in Sources */,
+				8D99590A27F9135300992176 /* orderbook.cpp in Sources */,
+				8D995919281B927A00992176 /* feedevent_unittest.cpp in Sources */,
 				8D99590127EFCC5E00992176 /* main.cpp in Sources */,
+				8D9959162813AB9600992176 /* feedevent.cpp in Sources */,
 				8DA3E43A27E6B03A009B7DC0 /* price4.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,7 +254,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D99590727F8F5F500992176 /* order.cpp in Sources */,
+				8D99591128035CAC00992176 /* orderbook_unittest.cpp in Sources */,
+				8D99590B27F9135300992176 /* orderbook.cpp in Sources */,
+				8D99590E28021B2300992176 /* order_unittest.cpp in Sources */,
+				8D99591A281B927A00992176 /* feedevent_unittest.cpp in Sources */,
 				8D99590227EFCCF300992176 /* price4.cpp in Sources */,
+				8D9959172813AB9600992176 /* feedevent.cpp in Sources */,
 				8D9F487E27EFB1BB005E7204 /* price4_unittest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,9 +388,15 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
-				"HEADER_SEARCH_PATHS[arch=*]" = "/usr/local/include/**";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/include/**",
+					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/include/**",
+				);
 				"INSTALL_PATH[sdk=*]" = /usr/local/include;
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/lib/**",
+					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/lib/**",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-lgtest_main",
@@ -375,9 +415,15 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
-				"HEADER_SEARCH_PATHS[arch=*]" = "/usr/local/include/**";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/include/**",
+					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/include/**",
+				);
 				"INSTALL_PATH[sdk=*]" = /usr/local/include;
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/lib/**",
+					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/lib/**",
+				);
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-lgtest",
 					"-lgtest_main",
@@ -395,8 +441,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
-				"HEADER_SEARCH_PATHS[arch=*]" = "/usr/local/include/**";
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/include/**",
+					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/include/**",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/lib/**",
+					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/lib/**",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-lgtest",
@@ -417,8 +469,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
-				"HEADER_SEARCH_PATHS[arch=*]" = "/usr/local/include/**";
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/include/**",
+					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/include/**",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/lib/**",
+					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/lib/**",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-lgtest",

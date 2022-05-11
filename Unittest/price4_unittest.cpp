@@ -13,7 +13,7 @@
 #include "../FinancialExchange/include/price4.hpp"
 
 
-namespace fe{
+namespace fe::price{
     namespace {
         TEST(Price4Test, FromString){
             const Price4 p1("1234");

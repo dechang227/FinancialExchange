@@ -11,13 +11,17 @@
 #include <stdio.h>
 #include <string>
 
-namespace fe{
+namespace fe::price{
     class Price4 {
     public:
         Price4() = default;
         explicit Price4(long unscaled) : unscaled_(unscaled) {}
         // convert from string
-        explicit Price4(const std::string& str);
+//        explicit
+        Price4(const std::string& str);
+        
+        Price4(const Price4& p):unscaled_(p.unscaled_){};
+        
         long unscaled() const { return unscaled_; }
         // convert to string
         std::string to_str() const;
@@ -44,6 +48,19 @@ namespace fe{
     private:
         long unscaled_;
     };
+}
+
+
+namespace std
+{
+  template <>
+  struct hash<fe::price::Price4>
+  {
+    std::size_t operator()(const fe::price::Price4 &k) const
+    {
+      return std::hash<long>()(k.unscaled());
+    }
+  };
 }
 
 #endif /* price4_hpp */
