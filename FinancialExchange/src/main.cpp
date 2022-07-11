@@ -6,6 +6,7 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include "nlohmann/json.hpp"
 #include "../include/price4.hpp"
 #include "../include/order.hpp"
@@ -37,7 +38,7 @@ int main(int argc, const char * argv[]) {
     
     
     const json order_json = {
-        {"time", 0},
+        {"time", 1},
         {"order_id", 1},
         {"symbol", "test"},
         {"price", "12.01"},
@@ -59,10 +60,22 @@ int main(int argc, const char * argv[]) {
 //    std::cout << due.to_str() << std::endl;
     std::unordered_map<std::string, BidOrderBook> test_order_books;
     test_order_books["test"];
+
+    std::ifstream config_file("/Users/dchen/Projects/FinancialExchange/FinancialExchange/data/config.json");
+    json config_json;
+    config_file >> config_json;
+    if(config_json["tick_size_"].empty()){
+        std::cout << "Check" << std::endl;
+    }
+    std::cout << config_json["tick_size_"] << std::endl;
+    std::cout << config_json["tick_size_rules"][0]["to_price"] << std::endl;
     
-    MatchingEngine me;
+    MatchingEngine me(config_json["lot_size"], config_json["tick_size_rules"]);
     std::shared_ptr<Order> new_order = std::make_shared<Order>(order_json);
+    
     std::string event_message = me.Process(new_order);
     std::cout << "Event: " << event_message << std::endl;
+    
+
     return 0;
 }

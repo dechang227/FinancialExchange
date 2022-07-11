@@ -18,6 +18,11 @@
 		8D9959172813AB9600992176 /* feedevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D9959142813AB9600992176 /* feedevent.cpp */; };
 		8D995919281B927A00992176 /* feedevent_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D995918281B927A00992176 /* feedevent_unittest.cpp */; };
 		8D99591A281B927A00992176 /* feedevent_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D995918281B927A00992176 /* feedevent_unittest.cpp */; };
+		8D995921283740F900992176 /* ticksizerule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D99591F283740F900992176 /* ticksizerule.cpp */; };
+		8D995922283740F900992176 /* ticksizerule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D99591F283740F900992176 /* ticksizerule.cpp */; };
+		8D995924287B79D900992176 /* matchingengin_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D995923287B79D900992176 /* matchingengin_unittest.cpp */; };
+		8D995925287B79D900992176 /* matchingengin_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D995923287B79D900992176 /* matchingengin_unittest.cpp */; };
+		8D995926287B7A1500992176 /* matchingengine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E42B27E6AE8B009B7DC0 /* matchingengine.cpp */; };
 		8D9F487E27EFB1BB005E7204 /* price4_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E45427E6BD55009B7DC0 /* price4_unittest.cpp */; };
 		8DA3E43627E6B03A009B7DC0 /* datapublisher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E42927E6AE8B009B7DC0 /* datapublisher.cpp */; };
 		8DA3E43827E6B03A009B7DC0 /* matchingengine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E42B27E6AE8B009B7DC0 /* matchingengine.cpp */; };
@@ -56,6 +61,10 @@
 		8D9959142813AB9600992176 /* feedevent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = feedevent.cpp; sourceTree = "<group>"; };
 		8D9959152813AB9600992176 /* feedevent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = feedevent.hpp; sourceTree = "<group>"; };
 		8D995918281B927A00992176 /* feedevent_unittest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = feedevent_unittest.cpp; sourceTree = "<group>"; };
+		8D99591E282E0E3900992176 /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
+		8D99591F283740F900992176 /* ticksizerule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ticksizerule.cpp; sourceTree = "<group>"; };
+		8D995920283740F900992176 /* ticksizerule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ticksizerule.hpp; sourceTree = "<group>"; };
+		8D995923287B79D900992176 /* matchingengin_unittest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = matchingengin_unittest.cpp; sourceTree = "<group>"; };
 		8D9F487327E6EF00005E7204 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8DA3E42927E6AE8B009B7DC0 /* datapublisher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = datapublisher.cpp; sourceTree = "<group>"; };
 		8DA3E42A27E6AE8B009B7DC0 /* price4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = price4.cpp; sourceTree = "<group>"; };
@@ -109,10 +118,19 @@
 		8D81CBB927D538AA00031DCA /* FinancialExchange */ = {
 			isa = PBXGroup;
 			children = (
+				8D99591D282E0DF200992176 /* data */,
 				8D9F487927EF9092005E7204 /* src */,
 				8D9F487827EF906C005E7204 /* include */,
 			);
 			path = FinancialExchange;
+			sourceTree = "<group>";
+		};
+		8D99591D282E0DF200992176 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				8D99591E282E0E3900992176 /* config.json */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 		8D9F487827EF906C005E7204 /* include */ = {
@@ -121,6 +139,7 @@
 				8DA3E44427E6B2FF009B7DC0 /* datapublisher.hpp */,
 				8DA3E44127E6B2FF009B7DC0 /* matchingengine.hpp */,
 				8D9959152813AB9600992176 /* feedevent.hpp */,
+				8D995920283740F900992176 /* ticksizerule.hpp */,
 				8D995913280CC52A00992176 /* jsonparser.hpp */,
 				8D99590927F9135300992176 /* orderbook.hpp */,
 				8DA3E44327E6B2FF009B7DC0 /* order.hpp */,
@@ -134,6 +153,7 @@
 			children = (
 				8DA3E42A27E6AE8B009B7DC0 /* price4.cpp */,
 				8DA3E42927E6AE8B009B7DC0 /* datapublisher.cpp */,
+				8D99591F283740F900992176 /* ticksizerule.cpp */,
 				8D99590827F9135300992176 /* orderbook.cpp */,
 				8D9959142813AB9600992176 /* feedevent.cpp */,
 				8DA3E42B27E6AE8B009B7DC0 /* matchingengine.cpp */,
@@ -157,6 +177,7 @@
 				8D99590F28035CAC00992176 /* orderbook_unittest.cpp */,
 				8DA3E45427E6BD55009B7DC0 /* price4_unittest.cpp */,
 				8D995918281B927A00992176 /* feedevent_unittest.cpp */,
+				8D995923287B79D900992176 /* matchingengin_unittest.cpp */,
 			);
 			path = Unittest;
 			sourceTree = "<group>";
@@ -239,11 +260,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D995921283740F900992176 /* ticksizerule.cpp in Sources */,
 				8DA3E43627E6B03A009B7DC0 /* datapublisher.cpp in Sources */,
 				8DA3E43827E6B03A009B7DC0 /* matchingengine.cpp in Sources */,
 				8DA3E43927E6B03A009B7DC0 /* order.cpp in Sources */,
 				8D99590A27F9135300992176 /* orderbook.cpp in Sources */,
 				8D995919281B927A00992176 /* feedevent_unittest.cpp in Sources */,
+				8D995924287B79D900992176 /* matchingengin_unittest.cpp in Sources */,
 				8D99590127EFCC5E00992176 /* main.cpp in Sources */,
 				8D9959162813AB9600992176 /* feedevent.cpp in Sources */,
 				8DA3E43A27E6B03A009B7DC0 /* price4.cpp in Sources */,
@@ -254,11 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D995926287B7A1500992176 /* matchingengine.cpp in Sources */,
+				8D995922283740F900992176 /* ticksizerule.cpp in Sources */,
 				8D99590727F8F5F500992176 /* order.cpp in Sources */,
 				8D99591128035CAC00992176 /* orderbook_unittest.cpp in Sources */,
 				8D99590B27F9135300992176 /* orderbook.cpp in Sources */,
 				8D99590E28021B2300992176 /* order_unittest.cpp in Sources */,
 				8D99591A281B927A00992176 /* feedevent_unittest.cpp in Sources */,
+				8D995925287B79D900992176 /* matchingengin_unittest.cpp in Sources */,
 				8D99590227EFCCF300992176 /* price4.cpp in Sources */,
 				8D9959172813AB9600992176 /* feedevent.cpp in Sources */,
 				8D9F487E27EFB1BB005E7204 /* price4_unittest.cpp in Sources */,

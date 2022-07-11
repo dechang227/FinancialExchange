@@ -6,18 +6,32 @@
 //
 
 #include <string>
+#include <fstream>
 #include "../include/order.hpp"
 #include "../include/orderbook.hpp"
 #include "../include/feedevent.hpp"
 #include "../include/matchingengine.hpp"
+#include "../include/jsonparser.hpp"
 
 namespace fe::matchingengine{
     
     namespace{
+        using ::nlohmann::json;
         using namespace fe::price;
         using namespace fe::order;
         using namespace fe::orderbook;
         using namespace fe::feedevent;
+    
+        std::vector<Order> ReadOrdersFromPath(const std::string &path){
+            std::string line;
+            std::ifstream infile(path);
+            std::vector<Order> orders;
+            while (std::getline(infile, line)){
+                json j = json::parse(line);
+                orders.emplace_back(j.get<Order>());
+            }
+            return orders;
+        }
     
         template <class T>
         void UpdateQuantityAfterOrderCancelling(std::shared_ptr<Order> o, OrderBook<T>& ob, int64_t &pre_quantity, int64_t& post_quantity){
@@ -108,7 +122,7 @@ namespace fe::matchingengine{
         }
     }
     
-    MatchingEngine::MatchingEngine(){
+    MatchingEngine::MatchingEngine(int32_t lot_size, json tick_size_rule):lot_size_(lot_size), tick_size_rule_(tick_size_rule){
     }
     
     std::string MatchingEngine::Process(std::shared_ptr<Order> order){
@@ -127,18 +141,38 @@ namespace fe::matchingengine{
         }
         return "This order can't be processed";
     }
-
+    
     std::string MatchingEngine::ValidateOrder(std::shared_ptr<Order> order){
-        if (order->time < 0){
+        if (order->time <= 0){
             return "Invalid order timestamp";
         }
         if (order->order_id < 0){
             return "Invalid order id";
         }
-        if (order->quantity <= 0) {
-            return "Invalid order quantity";
+        if (order->order_status == OrderStatus::NEW){
+            if (order->quantity <= 0) {
+                return "Invalid order quantity";
+            }
+            if (order->quantity % lot_size_ != 0){
+                return "Order quantity is not multiple of lot_size";
+            }
+            const auto ticks = tick_size_rule_.GetTicks();
+            const auto tick_itr = std::lower_bound(ticks.cbegin(), ticks.cend(), order->price,
+                                                   [](const Tick &lhs, const price::Price4 &price)
+                                                   {
+                                                        return lhs.from_price < price;
+                                                    }) - 1;
+            if (order->price.unscaled() % tick_itr->tick_size.unscaled() != 0){
+                return "Invalid order tick size";
+            }
+            return "Valid";
         }
-        return "Valid";
+        else if (order->order_status == OrderStatus::CANCEL){
+            return "Valid";
+        }
+        else {
+            return "Order status unknown";
+        }
     }
 
     std::string MatchingEngine::Cancel(std::shared_ptr<Order> order){
@@ -168,5 +202,38 @@ namespace fe::matchingengine{
         }
         order_id_map_.erase(order->order_id);
         return feed_events.to_str();
+    }
+
+    std::string MatchingEngine::PreMarketProcess(const std::string &order_path){
+        const std::vector<Order> orders = ReadOrdersFromPath(order_path);
+        std::string message;
+        for (const auto &order : orders){
+            message = message + "\n" + Process(std::make_shared<Order>(order));
+        }
+        return message;
+    }
+
+    std::string MatchingEngine::AfterMarketProcess(const std::string &output_path){
+        std::ofstream output(output_path, std::ios::app);
+        if (!output.is_open()){
+            return "output path is not open.";
+        }
+        for (const auto &kv : order_id_map_){
+            if (kv.second == nullptr){
+                continue;
+            }
+            if (kv.second.get()->time_in_force == TimeInForce::GTC){
+                continue;
+            }
+            json jorder;
+            order::to_json(jorder, *kv.second.get());
+            output << jorder << std::endl;
+        }
+        output.close();
+        
+        order_id_map_.clear();
+        ask_order_books_.clear();
+        bid_order_books_.clear();
+        return "Ok";
     }
 }

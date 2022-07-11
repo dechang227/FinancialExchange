@@ -82,19 +82,67 @@ namespace fe::order{
         }
     }
 
-//    static void to_json(json& j, Order& o){
-//        j = json({
-//                {"time", o.time},
-//                {"order_id", o.order_id},
-//                {"symbol", o.symbol},
-//                {"price", o.price.to_str()},
-//                {"quantity", o.quantity},
-//                {"order_type", "LIMIT"},
-//                {"order_side", "BUY"},
-//                {"order_status", "NEW"},
-//                {"time_in_force", "GTC"}
-//                });
-//    }
+    static void to_json(json& j, Order& o){
+        j["time"] = o.time;
+        j["order_id"] = o.order_id;
+        j["symbol"] = o.symbol;
+        j["price"] = o.price.to_str();
+        j["quantity"] = o.quantity;
+        
+        switch (o.order_type){
+            case OrderType::MARKET:
+                j["order_type"] = "MARKET";
+                break;
+            case OrderType::LIMIT:
+                j["order_type"] = "LIMIT";
+                break;
+            case OrderType::ICEBERG:
+                j["order_type"] = "ICEBERG";
+                break;
+            default:
+                j["order_type"] = "UNKNOWN";
+                break;
+        }
+        
+        switch (o.order_side){
+            case OrderSide::BUY:
+                j["order_side"] = "BUY";
+                break;
+            case OrderSide::SELL:
+                j["order_side"] = "SELL";
+                break;
+            default:
+                j["order_side"] = "UNKNOWN";
+                break;
+        }
+        
+        switch (o.order_status){
+            case OrderStatus::NEW:
+                j["order_status"] = "NEW";
+                break;
+            case OrderStatus::CANCEL:
+                j["order_status"] = "CANCEL";
+                break;
+            default:
+                j["order_status"] = "UNKNOWN";
+                break;
+        }
+        
+        switch (o.time_in_force){
+            case TimeInForce::DAY:
+                j["time_in_force"] = "DAY";
+                break;
+            case TimeInForce::IOC:
+                j["time_in_force"] = "IOC";
+                break;
+            case TimeInForce::GTC:
+                j["time_in_force"] = "TGC";
+                break;
+            default:
+                j["time_in_force"] = "UNKNOWN";
+                break;
+        }
+    }
 }
 
 
