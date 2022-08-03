@@ -22,17 +22,6 @@ namespace fe::matchingengine{
         using namespace fe::orderbook;
         using namespace fe::feedevent;
     
-        std::vector<Order> ReadOrdersFromPath(const std::string &path){
-            std::string line;
-            std::ifstream infile(path);
-            std::vector<Order> orders;
-            while (std::getline(infile, line)){
-                json j = json::parse(line);
-                orders.emplace_back(j.get<Order>());
-            }
-            return orders;
-        }
-    
         template <class T>
         void UpdateQuantityAfterOrderCancelling(std::shared_ptr<Order> o, OrderBook<T>& ob, int64_t &pre_quantity, int64_t& post_quantity){
             std::shared_ptr<Limit> l = ob.GetLimit(o->price);

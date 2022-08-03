@@ -19,7 +19,7 @@
 
 namespace fe::matchingengine{
     
-    using ::nlohmann::json;
+    using json = nlohmann::json;
     using namespace fe::price;
     using namespace fe::order;
     using namespace fe::orderbook;

@@ -9,12 +9,13 @@
 #define jsonparser_h
 
 #include <string>
+#include <fstream>
 #include "order.hpp"
 #include "nlohmann/json.hpp"
 
-using json = nlohmann::json;
 
 namespace fe::order{
+    using json = nlohmann::json;
 
     template<class T>
     T GetValueInJson(const json& j, std::string key, const T& default_value){
@@ -142,6 +143,17 @@ namespace fe::order{
                 j["time_in_force"] = "UNKNOWN";
                 break;
         }
+    }
+
+    static std::vector<Order> ReadOrdersFromPath(const std::string &path){
+        std::string line;
+        std::ifstream infile(path);
+        std::vector<Order> orders;
+        while (std::getline(infile, line)){
+            json j = json::parse(line);
+            orders.emplace_back(j.get<Order>());
+        }
+        return orders;
     }
 }
 

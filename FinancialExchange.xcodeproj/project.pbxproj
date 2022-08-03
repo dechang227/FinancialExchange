@@ -16,11 +16,9 @@
 		8D99591128035CAC00992176 /* orderbook_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D99590F28035CAC00992176 /* orderbook_unittest.cpp */; };
 		8D9959162813AB9600992176 /* feedevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D9959142813AB9600992176 /* feedevent.cpp */; };
 		8D9959172813AB9600992176 /* feedevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D9959142813AB9600992176 /* feedevent.cpp */; };
-		8D995919281B927A00992176 /* feedevent_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D995918281B927A00992176 /* feedevent_unittest.cpp */; };
 		8D99591A281B927A00992176 /* feedevent_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D995918281B927A00992176 /* feedevent_unittest.cpp */; };
 		8D995921283740F900992176 /* ticksizerule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D99591F283740F900992176 /* ticksizerule.cpp */; };
 		8D995922283740F900992176 /* ticksizerule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D99591F283740F900992176 /* ticksizerule.cpp */; };
-		8D995924287B79D900992176 /* matchingengin_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D995923287B79D900992176 /* matchingengin_unittest.cpp */; };
 		8D995925287B79D900992176 /* matchingengin_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D995923287B79D900992176 /* matchingengin_unittest.cpp */; };
 		8D995926287B7A1500992176 /* matchingengine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E42B27E6AE8B009B7DC0 /* matchingengine.cpp */; };
 		8D9F487E27EFB1BB005E7204 /* price4_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3E45427E6BD55009B7DC0 /* price4_unittest.cpp */; };
@@ -265,8 +263,6 @@
 				8DA3E43827E6B03A009B7DC0 /* matchingengine.cpp in Sources */,
 				8DA3E43927E6B03A009B7DC0 /* order.cpp in Sources */,
 				8D99590A27F9135300992176 /* orderbook.cpp in Sources */,
-				8D995919281B927A00992176 /* feedevent_unittest.cpp in Sources */,
-				8D995924287B79D900992176 /* matchingengin_unittest.cpp in Sources */,
 				8D99590127EFCC5E00992176 /* main.cpp in Sources */,
 				8D9959162813AB9600992176 /* feedevent.cpp in Sources */,
 				8DA3E43A27E6B03A009B7DC0 /* price4.cpp in Sources */,
@@ -409,24 +405,36 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G876HU2J39;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/lib/**",
+					"/Users/dchen/cpplib/howard-hinnant-date/build/**",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					"/usr/local/include/**",
-					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/include/**",
+					"/opt/homebrew/include/**",
+					"/Users/dchen/cpplib/howard-hinnant-date/include/**",
 				);
 				"INSTALL_PATH[sdk=*]" = /usr/local/include;
 				"LIBRARY_SEARCH_PATHS[arch=*]" = (
 					"/usr/local/lib/**",
 					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/lib/**",
+					"/Users/dchen/cpplib/howard-hinnant-date/build/**",
+					"/opt/homebrew/Cellar/glog/0.6.0/lib/**",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-lgtest_main",
 					"-lgtest",
+					"$(inherited)",
+					"-ldate-tz",
+					"-lcurl",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -436,23 +444,35 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G876HU2J39;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/lib/**",
+					"/Users/dchen/cpplib/howard-hinnant-date/build/**",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					"/usr/local/include/**",
-					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/include/**",
+					"/opt/homebrew/include/**",
+					"/Users/dchen/cpplib/howard-hinnant-date/include/**",
 				);
 				"INSTALL_PATH[sdk=*]" = /usr/local/include;
 				"LIBRARY_SEARCH_PATHS[arch=*]" = (
 					"/usr/local/lib/**",
 					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/lib/**",
+					"/Users/dchen/cpplib/howard-hinnant-date/build/**",
+					"/opt/homebrew/Cellar/glog/0.6.0/lib/**",
 				);
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-lgtest",
 					"-lgtest_main",
+					"$(inherited)",
+					"-ldate-tz",
+					"-lcurl",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -469,7 +489,8 @@
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					"/usr/local/include/**",
-					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/include/**",
+					"/opt/homebrew/include/**",
+					"/opt/howard-hinnant-date/include/**",
 				);
 				"LIBRARY_SEARCH_PATHS[arch=*]" = (
 					"/usr/local/lib/**",
@@ -497,7 +518,8 @@
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/usr/local/lib/**";
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					"/usr/local/include/**",
-					"/opt/homebrew/Cellar/nlohmann-json/3.10.5/include/**",
+					"/opt/homebrew/include/**",
+					"/opt/howard-hinnant-date/include/**",
 				);
 				"LIBRARY_SEARCH_PATHS[arch=*]" = (
 					"/usr/local/lib/**",
